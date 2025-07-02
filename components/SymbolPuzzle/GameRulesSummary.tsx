@@ -54,12 +54,6 @@ export default function GameRulesSummary() {
           <span className="text-gray-600">•</span>
           <span>Each Tango puzzle has one right answer and can be solved via deduction (you should never have to make a guess).</span>
         </div>
-        
-        <div className="bg-blue-50 border border-blue-200 rounded p-2 mt-3">
-          <p className="text-blue-800 text-xs">
-            <strong>💡 Already love LinkedIn&apos;s Tango?</strong> You&apos;ll recognize these rules instantly! The only difference is here you can play as many puzzles as you want, whenever you want.
-          </p>
-        </div>
       </div>
     </div>
   );
