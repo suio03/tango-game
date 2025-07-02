@@ -3,9 +3,9 @@ import Script from 'next/script'
 const Analytics = () => (
     <>
         {/* google analytics */}
-        {/* <Script
+        <Script
             async
-            src="https://www.googletagmanager.com/gtag/js?id=G-RKWD5LSQV7"
+            src="https://www.googletagmanager.com/gtag/js?id=G-QGXPBKHEYR"
         />
 
 
@@ -17,11 +17,11 @@ const Analytics = () => (
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
 
-                gtag('config', 'G-RKWD5LSQV7');
+                gtag('config', 'G-QGXPBKHEYR');
                 `,
             }}
-        /> */}
-        {/* <Script
+        />
+        <Script
             id="microsoft-clarity"
             strategy="afterInteractive"
             dangerouslySetInnerHTML={{
@@ -30,10 +30,10 @@ const Analytics = () => (
                     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
                     t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
                     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-                })(window, document, "clarity", "script", "s6cmyluaa6");
+                })(window, document, "clarity", "script", "s8n7tucvbf");
         `
             }}
-        /> */}
+        />
         <Script
             defer
             data-domain="tangogameunlimited.app"
