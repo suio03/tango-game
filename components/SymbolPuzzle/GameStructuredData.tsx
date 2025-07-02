@@ -81,7 +81,7 @@ export default function GameStructuredData() {
         ]
       }
     ],
-    "review": {
+    "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.8",
       "reviewCount": "1247",
