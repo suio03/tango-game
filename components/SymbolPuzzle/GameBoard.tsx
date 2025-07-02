@@ -20,6 +20,7 @@ import HowToPlay from './HowToPlay'
 import GameRulesSummary from './GameRulesSummary'
 import GameStructuredData from './GameStructuredData'
 import GameFAQ from './GameFAQ'
+import Footer from '../footer'
 
 
 // Timer hook
@@ -568,6 +569,7 @@ export default function SymbolPuzzleGameBoard() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 } 

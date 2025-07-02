@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="w-full flex flex-col items-center gap-4 py-8 bg-gray-50 border-t">
             {/* Social Icons Row */}
             <div className="flex items-center justify-center gap-4">
-                <a href="https://github.com/suio03/tango-game-unlimited" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-800 transition-colors">
+                <a href="https://github.com/suio03/tango-game" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-800 transition-colors">
                     <Image src={Github} alt="Github" className="w-6 h-6" />
                 </a>
             </div>
