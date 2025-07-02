@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+    /* Prevent overscroll bounce on mobile */
+    overscroll-behavior: none;
+    /* Prevent pull-to-refresh on mobile */
+    overscroll-behavior-y: none;
+}
+
+/* Additional mobile game improvements */
+.touch-none {
+    touch-action: none !important;
+}
+
+/* Prevent zoom on double tap in game area */
+.game-container {
+    touch-action: manipulation;
+}
+
+/* Custom CSS removed - using Tailwind classes instead */
+
+@layer base {
+    :root {
+        /* Strawberry-Lemon Light Theme */
+        --background: 0 0% 100%;
+        --foreground: 0 0% 3.9%;
+        --card: 0 0% 100%;
+        --card-foreground: 0 0% 3.9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 0 0% 3.9%;
+        --primary: 354 70% 64%;        /* Strawberry Red #EA5756 */
+        --primary-foreground: 0 0% 98%;
+        --secondary: 45 91% 58%;       /* Lemon Yellow #FBDB7B */
+        --secondary-foreground: 0 0% 9%;
+        --muted: 0 0% 96.1%;
+        --muted-foreground: 0 0% 45.1%;
+        --accent: 82 45% 55%;          /* Fresh Green #9AC676 */
+        --accent-foreground: 0 0% 9%;
+        --destructive: 354 77% 56%;    /* Deeper Strawberry #E8413E */
+        --destructive-foreground: 0 0% 98%;
+        --border: 0 0% 89.8%;
+        --input: 0 0% 89.8%;
+        --ring: 354 70% 64%;           /* Strawberry Red for focus rings */
+        --chart-1: 354 70% 64%;        /* Strawberry Red */
+        --chart-2: 45 91% 58%;         /* Lemon Yellow */
+        --chart-3: 82 45% 55%;         /* Fresh Green */
+        --chart-4: 39 85% 59%;         /* Orange accent #F9AF49 */
+        --chart-5: 125 50% 55%;        /* Lime Green #85B932 */
+        --radius: 0.5rem;
+    }
+    .dark {
+        /* Strawberry-Lemon Dark Theme */
+        --background: 0 0% 3.9%;
+        --foreground: 0 0% 98%;
+        --card: 0 0% 3.9%;
+        --card-foreground: 0 0% 98%;
+        --popover: 0 0% 3.9%;
+        --popover-foreground: 0 0% 98%;
+        --primary: 354 70% 64%;        /* Strawberry Red - same in dark */
+        --primary-foreground: 0 0% 98%;
+        --secondary: 45 78% 65%;       /* Lighter Lemon for dark mode */
+        --secondary-foreground: 0 0% 9%;
+        --muted: 0 0% 14.9%;
+        --muted-foreground: 0 0% 63.9%;
+        --accent: 82 35% 45%;          /* Muted Green for dark */
+        --accent-foreground: 0 0% 98%;
+        --destructive: 354 77% 56%;    /* Deeper Strawberry */
+        --destructive-foreground: 0 0% 98%;
+        --border: 0 0% 14.9%;
+        --input: 0 0% 14.9%;
+        --ring: 354 70% 64%;           /* Strawberry Red */
+        --chart-1: 354 70% 64%;        /* Strawberry Red */
+        --chart-2: 45 78% 65%;         /* Lemon Yellow */
+        --chart-3: 82 35% 45%;         /* Fresh Green */
+        --chart-4: 39 75% 55%;         /* Orange accent */
+        --chart-5: 125 40% 45%;        /* Lime Green */
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+/* Custom fruit-themed gradient utilities */
+@layer utilities {
+    .bg-strawberry-gradient {
+        background: linear-gradient(135deg, hsl(354 70% 64%) 0%, hsl(354 77% 56%) 100%);
+    }
+    
+    .bg-lemon-gradient {
+        background: linear-gradient(135deg, hsl(45 91% 58%) 0%, hsl(39 85% 59%) 100%);
+    }
+    
+    .bg-fresh-gradient {
+        background: linear-gradient(135deg, hsl(82 45% 55%) 0%, hsl(125 50% 55%) 100%);
+    }
+    
+    .text-strawberry {
+        color: hsl(354 70% 64%);
+    }
+    
+    .text-lemon {
+        color: hsl(45 91% 58%);
+    }
+    
+    .text-fresh-green {
+        color: hsl(82 45% 55%);
+    }
+}
