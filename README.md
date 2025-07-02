@@ -1,148 +1,199 @@
-# Symbol Puzzle Game
+# 🎮 Tango Game Unlimited
 
-A challenging logic puzzle game built with Next.js 14, TypeScript, and Tailwind CSS.
+**The unlimited version of LinkedIn's hugely popular daily Tango puzzle!**
 
-## 🎮 Game Overview
+Love LinkedIn's daily Tango challenge but wish you could play more? Tango Game Unlimited gives you the exact same addictive logic gameplay with unlimited puzzles, multiple difficulty levels, and no daily limits.
 
-Fill grids with circles (☀️) and crescents (🌙) following logical constraints:
+🔗 **[Play Now →](https://tangogameunlimited.app)**
 
-- **Equal Distribution**: Each row and column must have equal numbers of circles and crescents
-- **No Consecutive Rule**: No more than 2 consecutive identical symbols allowed
-- **Constraint Solving**: Cells with `=` must match, cells with `×` must differ
-- **Unique Solutions**: Each puzzle has exactly one solution that can be found through logical deduction
+![Tango Game Screenshot](public/screenshot.png)
 
-## ✨ Features
+## 🌟 Features
 
-- **Multiple Grid Sizes**: 6×6 and 8×8 puzzles with varying difficulty
-- **Daily Challenges**: New puzzles every day with streak tracking
-- **Unlimited Mode**: Practice with randomly generated puzzles
-- **Smart Hint System**: Get helpful hints when stuck
-- **Real-time Validation**: Immediate feedback on rule violations
-- **Responsive Design**: Works perfectly on desktop and mobile
-- **Statistics Tracking**: Monitor your progress and performance
+### 🚀 **Unlimited Play**
+- Play as many Tango puzzles as you want
+- No 24-hour waiting periods like LinkedIn
+- Generate new puzzles instantly
 
-## 🚀 Getting Started
+### 🎯 **Multiple Game Modes**
+- **Daily Challenge** - Featured puzzle of the day
+- **Unlimited Mode** - Endless puzzle generation
+- **Multiple Difficulties** - 6×6 (Easy) and 8×8 (Hard) grids
+
+### 🎮 **Same Rules as LinkedIn Tango**
+- Fill grids with circles (☀️) and crescents (🌙)
+- Equal numbers in each row/column
+- No more than 2 consecutive identical symbols
+- Follow constraint indicators (= and ×)
+
+### ✨ **Enhanced Experience**
+- **No Account Required** - Start playing immediately
+- **Mobile Responsive** - Perfect on phones, tablets, and desktop
+- **Timer & Move Tracking** - Track your solving progress
+- **Statistics** - Monitor your win rates and streaks
+- **Clear Function** - Reset puzzle without starting over
+
+## 🚀 Quick Start
 
 ### Prerequisites
-
 - Node.js 18+ 
 - npm or yarn
 
 ### Installation
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/symbol-puzzle-game.git
-cd symbol-puzzle-game
-```
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/tango-game.git
+   cd tango-game
+   ```
 
-2. Install dependencies:
-```bash
-npm install
-# or
-yarn install
-```
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-3. Run the development server:
-```bash
-npm run dev
-# or
-yarn dev
-```
+3. **Run development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
 ## 🎯 How to Play
 
-1. **Click cells** to cycle through: Empty → Circle → Crescent → Empty
-2. **Follow the rules**:
-   - Equal circles and crescents in each row/column
-   - Maximum 2 consecutive identical symbols
-   - Respect constraint indicators (= and ×)
-3. **Use hints** if you get stuck (limited per puzzle)
-4. **Complete the grid** to win!
+### Basic Rules
+1. **Fill the grid** with circles (☀️) and crescents (🌙)
+2. **Balance requirement** - Each row and column must have equal numbers of both symbols
+3. **Adjacent rule** - No more than 2 consecutive identical symbols
+4. **Constraints** - Follow = (same) and × (different) indicators
 
-## 🛠 Tech Stack
+### Controls
+- **Click** to cycle through symbols: Empty → Circle → Crescent
+- **Right-click** to clear a cell
+- **Clear button** to reset all your moves
+- **New Game** to generate a fresh puzzle
 
-- **Framework**: Next.js 14 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **State Management**: Zustand
-- **Icons**: Custom SVG components
-- **Deployment**: Vercel
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 14](https://nextjs.org/) with App Router
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
+- **State Management**: React hooks with custom game logic
+- **Deployment**: Ready for [Vercel](https://vercel.com/), [Netlify](https://netlify.com/), or any static host
 
 ## 📁 Project Structure
 
 ```
-src/
-├── app/                    # Next.js App Router pages
-├── components/
-│   ├── SymbolPuzzle/      # Game components
-│   └── ui/                # Reusable UI components
-├── hooks/                 # Custom React hooks
-├── lib/
-│   └── symbolPuzzle/      # Game logic and utilities
-└── types/                 # TypeScript type definitions
+tango-game/
+├── app/                    # Next.js app directory
+│   ├── layout.tsx         # Root layout with SEO metadata
+│   ├── page.tsx           # Homepage
+│   └── globals.css        # Global styles
+├── components/            # React components
+│   ├── SymbolPuzzle/     # Game-specific components
+│   │   ├── GameBoard.tsx # Main game interface
+│   │   ├── GameCell.tsx  # Individual puzzle cells
+│   │   ├── HowToPlay.tsx # Game instructions
+│   │   └── ...           # Other game components
+│   └── ui/               # Reusable UI components
+├── hooks/                # Custom React hooks
+│   └── useSymbolPuzzleGameState.ts
+├── lib/                  # Utility libraries
+│   ├── symbolPuzzle/    # Game logic
+│   │   ├── generator.ts # Puzzle generation
+│   │   ├── solver.ts    # Puzzle solving logic
+│   │   └── validation.ts # Rule validation
+│   └── utils.ts         # General utilities
+├── types/               # TypeScript type definitions
+└── public/             # Static assets
 ```
 
-## 🎨 Game Logic
+## 🎮 Game Logic
 
-The game implements sophisticated puzzle generation and validation:
+### Puzzle Generation
+- Uses constraint satisfaction algorithms
+- Generates puzzles with unique solutions
+- Adjustable difficulty based on grid size and constraint density
 
-- **Puzzle Generation**: Creates valid grids with unique solutions
-- **Constraint System**: Handles equality and inequality relationships
-- **Validation Engine**: Real-time checking of all game rules
-- **Solver Algorithm**: Ensures puzzles are solvable through logic
+### Validation System
+- Real-time rule checking
+- Visual feedback for violations
+- Ensures puzzle solvability
 
-## 📱 Responsive Design
+### Statistics Tracking
+- Local storage for game statistics
+- Separate tracking for daily and unlimited modes
+- Win rates, streaks, and completion times
 
-The game adapts to all screen sizes:
-- **Desktop**: Full sidebar with controls and statistics
-- **Mobile**: Collapsible controls for optimal gameplay
-- **Touch-friendly**: Large buttons and intuitive interactions
+## 🚀 Deployment
 
-## 🔧 Development
+### Vercel (Recommended)
+1. Push your code to GitHub
+2. Import project in [Vercel Dashboard](https://vercel.com/dashboard)
+3. Deploy automatically with zero configuration
 
-### Available Scripts
+### Manual Deployment
+```bash
+# Build the project
+npm run build
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production  
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
-- `npm run type-check` - Run TypeScript checks
+# The 'out' directory contains static files ready for deployment
+```
 
-### Code Quality
+## 🤝 Contributing
 
-- ESLint configuration for code quality
-- TypeScript for type safety
-- Prettier for code formatting
-- Strict mode enabled
+We welcome contributions! Here's how to get started:
 
-## 📊 Performance
+1. **Fork the repository**
+2. **Create a feature branch**
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+3. **Make your changes**
+4. **Commit with clear messages**
+   ```bash
+   git commit -m "Add amazing feature"
+   ```
+5. **Push and create a Pull Request**
 
-- **Fast Loading**: Optimized bundle size
-- **Smooth Animations**: 60fps transitions
-- **Efficient Rendering**: React optimization patterns
-- **Local Storage**: Persistent game state
+### Development Guidelines
+- Follow TypeScript best practices
+- Use existing component patterns
+- Add tests for new game logic
+- Update documentation for new features
 
-## 🌟 Contributing
+## 📊 SEO & Marketing
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+This project is optimized for users searching:
+- "LinkedIn Tango game unlimited"
+- "Tango puzzle free"
+- "Unlimited Tango game"
+- "LinkedIn puzzle unlimited"
+
+### Key SEO Features
+- Optimized meta tags and descriptions
+- Structured data for search engines
+- FAQ schema markup
+- Mobile-first responsive design
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🎉 Acknowledgments
+## 🙏 Acknowledgments
 
-- Inspired by classic logic puzzle games
+- Inspired by LinkedIn's daily Tango puzzle
 - Built with modern web technologies
-- Designed for puzzle enthusiasts everywhere
+- Community feedback and contributions
 
 ---
 
-**Ready to challenge your mind? Start playing Symbol Puzzle today!** 🧩
+**Love the game?** ⭐ Star this repository and share it with puzzle enthusiasts!
+
+**Want unlimited Tango puzzles?** 🎮 [Play now](https://tangogameunlimited.app) - no sign-up required!
