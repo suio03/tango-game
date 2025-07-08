@@ -224,13 +224,6 @@ function createInitialState(solution: GameCell[][], config: GameConfig): GameCel
     initialState[pos.row][pos.col].value = 'empty';
   }
   
-  // Debug: Log removal statistics
-  console.log(`Puzzle Generation Debug:
-    Grid Size: ${config.gridSize}×${config.gridSize} (${totalCells} cells)
-    Pre-filled: ${cellsToKeep} cells (${Math.round(cellsToKeep/totalCells*100)}%)
-    Cells removed: ${cellsToRemove}
-    Final empty cells: ${initialState.flat().filter(c => c.value === 'empty').length}
-  `);
   
   // Mark remaining cells as fixed
   for (let row = 0; row < config.gridSize; row++) {

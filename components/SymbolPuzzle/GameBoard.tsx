@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { useSymbolPuzzleGameState } from '../../hooks/useSymbolPuzzleGameState'
 import GameCell from './GameCell'
 import ConstraintIndicator from './ConstraintIndicator'
@@ -55,6 +56,38 @@ function useTimer(isRunning: boolean, resetTrigger: number) {
 }
 
 export default function SymbolPuzzleGameBoard() {
+    // Related games data
+    const relatedGames = [
+        {
+            name: 'Zip Game',
+            url: 'https://zipgame.net/',
+            logo: '/other-game/zip-game.svg',
+            category: 'Logic Puzzle',
+            hoverColor: 'blue'
+        },
+        {
+            name: 'Sprunki Game',
+            url: 'https://sprunkiincrediboxes.net/',
+            logo: '/other-game/sprunki.svg',
+            category: 'Music Creation',
+            hoverColor: 'green'
+        },
+        {
+            name: 'Elemendle',
+            url: 'https://elemendle.com/',
+            logo: '/other-game/elemendle.svg',
+            category: 'Chemistry Puzzle',
+            hoverColor: 'purple'
+        },
+        {
+            name: 'Bleachdle',
+            url: 'https://bleachdle.app/',
+            logo: '/other-game/bleachdle.svg',
+            category: 'Anime Trivia',
+            hoverColor: 'orange'
+        }
+    ]
+
     const {
         gameState,
         resetGame,
@@ -361,25 +394,71 @@ export default function SymbolPuzzleGameBoard() {
                                 </div>
                             )}
 
-                                        {/* Mobile Quick Controls - Only show when sidebar is hidden */}
-            {!showControls && (
-              <div className="lg:flex hidden justify-center gap-4 mb-6">
-                <button
-                  onClick={handleClearGame}
-                  className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg transition-colors font-medium shadow-md"
-                  suppressHydrationWarning={true}
-                >
-                  🧹 Clear
-                </button>
-                <button
-                  onClick={handleNewGame}
-                  className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg transition-colors font-medium shadow-md"
-                  suppressHydrationWarning={true}
-                >
-                  🎮 New Game
-                </button>
-              </div>
-            )}
+                            {/* Mobile Quick Controls - Only show when sidebar is hidden */}
+                            {!showControls && (
+                                <div className="lg:flex hidden justify-center gap-4 mb-6">
+                                    <button
+                                        onClick={handleClearGame}
+                                        className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg transition-colors font-medium shadow-md"
+                                        suppressHydrationWarning={true}
+                                    >
+                                        🧹 Clear
+                                    </button>
+                                    <button
+                                        onClick={handleNewGame}
+                                        className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg transition-colors font-medium shadow-md"
+                                        suppressHydrationWarning={true}
+                                    >
+                                        🎮 New Game
+                                    </button>
+                                </div>
+                            )}
+
+                            {/* Related Games Section */}
+                            <div className="max-w-2xl mx-auto mb-6">
+                                <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6">
+                                    <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">🎮 More Games You&apos;ll Love</h2>
+                                    <p className="text-gray-600 text-sm mb-6">
+                                        Discovered through Tango Game Unlimited? Check out these other amazing games!
+                                    </p>
+
+                                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                                        {relatedGames.map((game, index) => {
+                                            const getHoverClasses = (color: string) => {
+                                                switch (color) {
+                                                    case 'blue': return 'hover:border-blue-300 group-hover:text-blue-600'
+                                                    case 'green': return 'hover:border-green-300 group-hover:text-green-600'
+                                                    case 'purple': return 'hover:border-purple-300 group-hover:text-purple-600'
+                                                    case 'orange': return 'hover:border-orange-300 group-hover:text-orange-600'
+                                                    default: return 'hover:border-gray-300 group-hover:text-gray-600'
+                                                }
+                                            }
+
+                                            return (
+                                                <a
+                                                    key={index}
+                                                    href={game.url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className={`group flex flex-col items-center p-4 border border-gray-200 rounded-lg hover:shadow-md transition-all duration-200 ${getHoverClasses(game.hoverColor).split(' ')[0]}`}
+                                                >
+                                                    <div className="w-16 h-16 mb-3 flex items-center justify-center">
+                                                        <Image
+                                                            src={game.logo}
+                                                            alt={`${game.name} Logo`}
+                                                            width={64}
+                                                            height={64}
+                                                            className="object-contain"
+                                                        />
+                                                    </div>
+                                                    <h3 className={`font-medium text-gray-800 text-center ${getHoverClasses(game.hoverColor).split(' ')[1]}`}>{game.name}</h3>
+                                                    <p className="text-xs text-gray-500 text-center mt-1">{game.category}</p>
+                                                </a>
+                                            )
+                                        })}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         {/* Control Panel - Collapsible */}
@@ -429,8 +508,8 @@ export default function SymbolPuzzleGameBoard() {
                                             <button
                                                 onClick={() => handleGridSizeChange(6)}
                                                 className={`w-full px-3 py-2 rounded-lg text-sm transition-colors ${gameState.gridSize === 6
-                                                        ? 'bg-primary text-white'
-                                                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                                    ? 'bg-primary text-white'
+                                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                                     }`}
                                                 suppressHydrationWarning={true}
                                             >
@@ -439,8 +518,8 @@ export default function SymbolPuzzleGameBoard() {
                                             <button
                                                 onClick={() => handleGridSizeChange(8)}
                                                 className={`w-full px-3 py-2 rounded-lg text-sm transition-colors ${gameState.gridSize === 8
-                                                        ? 'bg-primary text-white'
-                                                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                                    ? 'bg-primary text-white'
+                                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                                     }`}
                                                 suppressHydrationWarning={true}
                                             >
@@ -450,25 +529,25 @@ export default function SymbolPuzzleGameBoard() {
                                     </div>
                                 )}
 
-                                              {/* Action Buttons */}
-              <div className="space-y-3">
-                <button
-                  onClick={handleNewGame}
-                  className="w-full bg-primary hover:bg-primary/90 text-white px-4 py-3 rounded-lg transition-colors font-medium shadow-md"
-                  suppressHydrationWarning={true}
-                >
-                  🎮 New Game
-                </button>
-                
-                <button
-                  onClick={handleClearGame}
-                  className="w-full bg-orange-500 hover:bg-orange-600 text-white px-4 py-3 rounded-lg transition-colors font-medium shadow-md"
-                  suppressHydrationWarning={true}
-                >
-                  🧹 Clear Puzzle
-                </button>
+                                {/* Action Buttons */}
+                                <div className="space-y-3">
+                                    <button
+                                        onClick={handleNewGame}
+                                        className="w-full bg-primary hover:bg-primary/90 text-white px-4 py-3 rounded-lg transition-colors font-medium shadow-md"
+                                        suppressHydrationWarning={true}
+                                    >
+                                        🎮 New Game
+                                    </button>
 
-              </div>
+                                    <button
+                                        onClick={handleClearGame}
+                                        className="w-full bg-orange-500 hover:bg-orange-600 text-white px-4 py-3 rounded-lg transition-colors font-medium shadow-md"
+                                        suppressHydrationWarning={true}
+                                    >
+                                        🧹 Clear Puzzle
+                                    </button>
+
+                                </div>
                             </div>
 
                             {/* Game Stats */}
@@ -566,6 +645,8 @@ export default function SymbolPuzzleGameBoard() {
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
